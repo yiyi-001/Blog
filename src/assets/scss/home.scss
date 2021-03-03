@@ -1,0 +1,22 @@
+  Nav{
+    display:flex;
+    
+  }
+  #content-wrap{
+    display: flex;
+    justify-content: space-between;
+    width: 1120px;
+    margin: 30px auto;
+
+    .content-left-side {
+        width: 780px;
+        height: 100%;
+        // margin-top: 60px;
+    }
+
+    .content-right-side {
+        width: 300px;
+        height: 100%;
+        // margin-top: 60px;
+    }
+  }
