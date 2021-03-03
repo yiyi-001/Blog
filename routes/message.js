@@ -1,0 +1,68 @@
+const express = require ('express');
+const router = require('express').Router();
+const bodyParser = require("body-parser");
+const MessageController = require('../controllers/message');
+
+
+// 留言
+
+router.get ('/', async(req,res)=>{
+  let data = req.query
+  // console.log(data)
+  try{
+    let result = await MessageController.list(data);
+    res.send(result)
+  }catch(e){
+    // console.log('/===>>>',e.message);
+    
+    res.send(result)
+  }
+});  
+
+
+
+
+router.get ('/delete',async(req,res)=>{
+  let id = req.query.id;
+  
+  try{
+    let result = await MessageController.remove(id)
+    res.send(result)
+  }catch(e){
+    console.log('/===>>>',e.message);
+    res.send(result)
+  }
+  
+});   
+
+router.post ('/edit', async(req,res)=>{
+  let data = req.body
+  console.log("data===>>>",data);
+  
+  try{
+    let result = await MessageController.update(data)
+    res.send(result)
+  }catch(e){
+    console.log('/edit===>>>',e.message);
+    res.send(result)
+  }
+});   
+
+router.post ('/add', async(req,res)=>{
+  let data = req.body
+  console.log("data===>>>",data);
+  
+  try{
+    let result = await MessageController.add(data)
+    res.send(result)
+  }catch(e){
+    console.log('/add===>>>',e.message);
+    res.send(result)
+  }
+});   
+
+
+
+
+
+module.exports = router;
